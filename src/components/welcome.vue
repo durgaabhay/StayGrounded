@@ -1,6 +1,6 @@
 <template>
-
   <div class="container">
+
     <img src=
            "../assets/logo.jpg"  alt="Stay Grounded Logo Image" class="image" >
     <div class="middle">
@@ -9,7 +9,6 @@
         <router-view></router-view></div>
     </div>
   </div>
-
 </template>
 
 <script>

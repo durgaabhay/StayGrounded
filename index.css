@@ -1,6 +1,3 @@
-
-
-
 body {
   background: beige;
 }
@@ -14,6 +11,20 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.pic-image {
+  width: auto;
+  height: 200px;
+}
+
+.audio-control {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  text-align: center;
 }
 
 
@@ -128,11 +139,36 @@ body {
   backface-visibility: hidden;
 }
 
+/* Split the screen in half */
+.split {
+  height: 150%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 10px;
+}
+/* Control the left side */
+.left {
+  left: 5px;
+  top: 80px;
+  right: 2px;
+  background-color: azure;
+}
+
+/* Control the right side */
+.right {
+  right: 5px;
+  top: 80px;
+  background-color: lightyellow;
+}
+
 .middle {
-  transition: .5s ease;
+  transition: .3s ease;
   opacity: 0;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -167,5 +203,43 @@ body {
 .jumbotron p {
 }
 
+#brewTable {
+  width: 100%;
+  height: 100px;
+  display: inline-table;
+}
 
+.leftTopBox {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  display: inline-block;
+}
+
+.intbox {
+  width: 50%;
+  height: 30%;
+  display: inline-block;
+}
+
+.rightTopBox {
+  background-color:cadetblue;
+  margin:auto;
+  text-align:center;
+
+}
+
+.leftBottomBox {
+  background-color:lightpink;
+  margin:auto;
+  text-align:center;
+  color:#FFFFFF;
+}
+
+.rightBottomBox {
+  background-color:#000000;
+  margin:auto;
+  text-align:center;
+  color:#FFFFFF;
+}
 
