@@ -1,67 +1,57 @@
+<script src="../router/index.js"></script>
 <template>
 
   <b-container fluid>
-    <b-img id= 'logo' :src="require('../assets/logo.jpg')" fluid alt="Stay Grounded Logo Image"></b-img>
-    <b-jumbotron>
-      <h3 slot="header">Welcome {{ this.$route.params.userName }}</h3>
-      <p> You have a variety of options there!!! Grab one from your past orders ||
-        Explore our menu options || Have some time?? Build your own drink</p>
-    </b-jumbotron>
-    <div>
-      <b-row>
-        <b-col md="4">
-          <h2>Order History</h2>
-          <p>Click any one of your past orders</p>
-          <b-list-group>
-            <b-list-group-item v-if="user.pastOrder1">
-              <router-link to="/brew">{{ user.pastOrder1 }}</router-link>
-            </b-list-group-item>
-            <b-list-group-item v-if="user.pastOrder2">
-              <router-link to="/brew">{{ user.pastOrder2 }}</router-link>
-            </b-list-group-item>
-            <b-list-group-item v-if="user.pastOrder3">
-              <router-link to="/brew">{{ user.pastOrder3 }}</router-link>
-            </b-list-group-item>
-          </b-list-group>
-          <div>
-          <p><router-link class="btn btn-outline-success my-2 my-sm-0" to="/menu" role="button">More Details >></router-link> </p>
-          </div>
-        </b-col>
+    <!-- NAVBAR -->
+    <nav>
+      <ul>
 
-<!-- Next element -->
-        <b-col md="4">
-          <h2>Customize my drink</h2>
-          <p>Try something exciting....</p>
-          <b-list-group>
-            <b-list-group-item>Build a new drink</b-list-group-item>
-            <b-list-group-item>Taste a different flavor</b-list-group-item>
-            <b-list-group-item>Add a new topping</b-list-group-item>
-          </b-list-group>
-          <div>
-            <p><router-link class="btn btn-outline-success my-2 my-sm-0" to="/buildDrink" role="button">More Details >></router-link> </p>
-          </div>
-        </b-col>
+        <li><a><router-link to="/home/Donna">Home</router-link></a></li>
+        <li><a><router-link to="/data"> Data</router-link></a></li>
 
-      <!-- Next element -->
-        <b-col md="4">
-          <h2>Menu - Recipes</h2>
-          <p>We have a wide range of recipes</p>
-          <b-list-group>
-            <b-list-group-item>Coffee- Freshly brewed</b-list-group-item>
-            <b-list-group-item>Tea - Exciting flavors</b-list-group-item>
-            <b-list-group-item>Fresh juices</b-list-group-item>
-          </b-list-group>
-          <div>
-            <p><router-link class="btn btn-outline-success my-2 my-sm-0" to="/menu" role="button">More Details >></router-link> </p>
-          </div>
-        </b-col>
-      </b-row>
+        <li><a><router-link to="/menu">Brew A Cup</router-link></a></li>
+        <li><a><router-link to="/speechform">Voice Order</router-link></a></li>
+      </ul>
+    </nav>
+    <div id= 'centerContainer'>
+      <b-img id= 'logo' :src="require('../assets/logo.png')" fluid alt="Stay Grounded Logo Image"></b-img>
+
+      <div id="centerContent">
+        <b-row>
+          <b-col md="3">
+            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/data" role="button">
+              <i class="material-icons">
+                insert_chart
+              </i>
+            <h2>Bean Stats</h2>
+            </router-link>
+          </b-col>
+
+          <!-- Next element -->
+          <b-col md="3">
+            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/buildDrink" role="button">
+              <i class="material-icons">
+                build
+              </i>
+              <h2>Build A Drink</h2>
+            </router-link>
+          </b-col>
+
+          <!-- Next element -->
+          <b-col md="3">
+            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/speechform" role="button">
+              <i class="material-icons">
+                local_drink</i>
+              <h2>Get Nutrition Info</h2>
+            </router-link>
+          </b-col>
+        </b-row>
+      </div>
     </div>
   </b-container>
 
 </template>
 <script>
-  import users from '../data/users'
   export default {
     name: "home",
     data() {
@@ -70,25 +60,6 @@
         drinks: {},
         user: {},
         error: {}
-      }
-    },
-    methods: {
-      showMenu(){
-        console.log('Viewing menu details');
-        this.$router.push('/menu');
-      },
-      buildYourDrink(){
-        console.log('Build your own drink');
-        this.$router.push('/buildDrink');
-      }
-    },
-    created(){
-      console.log(this.$route.params.userName);
-      for(let i=0; i<= users.length; i++){
-        console.log('User Input :', users[i]);
-        if(this.$route.params.userName === users[i].userName){
-          this.user = users[i];
-        }
       }
     }
   }

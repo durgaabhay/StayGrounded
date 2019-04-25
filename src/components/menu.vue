@@ -1,7 +1,17 @@
 <template>
   <b-container>
+    <nav>
+      <ul>
+
+        <li><a><router-link to="/home/Donna">Home</router-link></a></li>
+        <li><a><router-link to="/data"> Data</router-link></a></li>
+
+        <li><a><router-link to="/menu">Brew A Cup</router-link></a></li>
+        <li><a><router-link to="/speechform">Voice Order</router-link></a></li>
+      </ul>
+    </nav>
     <div>
-      <h2><b-badge>Menu - Recipes</b-badge></h2>
+      <h2><b-badge>Recipes</b-badge></h2>
       <hr class="mt-2 mb-5">
     </div>
 
@@ -9,10 +19,10 @@
       <b-row>
         <!-- Item 1 -->
         <b-col lg="3" md="4" cols="6">
-            <b-link href="#" >
-              <b-img class="img-fluid img-thumbnail" :src="require('../assets/aroma-aromatic-art-434213.jpg')" alt=""></b-img>
-              <router-link to="/brew/Cappuccino" class="figure-caption text-center">Cappuccino</router-link>
-            </b-link>
+          <b-link href="#" >
+            <b-img class="img-fluid img-thumbnail" :src="require('../assets/aroma-aromatic-art-434213.jpg')" alt=""></b-img>
+            <router-link to="/brew/Cappuccino" class="figure-caption text-center">Cappuccino</router-link>
+          </b-link>
         </b-col>
         <!-- Item 2 -->
         <b-col lg="3" md="4" cols="6">
@@ -86,19 +96,19 @@
 
 <script>
   import menu from '../data/menu'
-    export default {
-        name: "menu",
-        data() {
-          return {
-            title: "Recipe Index",
-            drinks: {}
-          }
-        },
-        created() {
-          this.drinks = menu;
-          console.log('The drink list are : ', this.drinks.length);
-        }
+  export default {
+    name: "menu",
+    data() {
+      return {
+        title: "Recipe Index",
+        drinks: {}
+      }
+    },
+    created() {
+      this.drinks = menu;
+      console.log('The drink list are : ', this.drinks.length);
     }
+  }
 </script>
 
 <style scoped>

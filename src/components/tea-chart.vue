@@ -4,7 +4,7 @@
       <div>
         <h2>{{ teaTitle }}</h2>
         <apexchart type=bar height=850 :options="chartOptions" :series="series" />
-        <h5>Disclaimer: Data fetched from https://www.statista.com/statistics/507950/global-per-capita-tea-consumption-by-country/</h5>
+        <!--<h5>Disclaimer: Data fetched from https://www.statista.com/statistics/507950/global-per-capita-tea-consumption-by-country/</h5>-->
       </div>
     </div>
   </div>

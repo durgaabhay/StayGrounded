@@ -1,69 +1,82 @@
 <template>
-  <div id="brewTable">
-    <b-alert show variant="success">
-      <h4 class="alert-heading">We are brewing.Please wait!!! Scroll down for some fun facts</h4>
-    </b-alert>
-    <div class="intbox leftTopBox">
-      <h3 class="alert-heading">Your drink is getting ready</h3>
-        <vue-p5 @sketch="sketch" @setup="setup" @draw="draw"></vue-p5>
-    </div>
-    <div class="intbox leftBottomBox">
-      <h2>Sarah to include to coffee cup pages here.</h2>
-    </div>
-    <div class="intbox rightTopBox">
-      <coffee-chart></coffee-chart>
-    </div>
-      <div class="intbox rightBottomBox">
-        <tea-chart></tea-chart>
-    </div>
-  </div>
+        <vue-p5 id="centerContainer" @sketch="sketch" @setup="setup" @draw="draw"></vue-p5>
 </template>
 
 <script>
-  import VueP5 from "vue-p5";
-  import coffeeChart from '../components/coffee-chart'
-  import teaChart from '../components/tea-chart'
   export default {
     name: "p5-example",
     components: {
-      "vue-p5": VueP5,
-      coffeeChart,
-      teaChart
+      "vue-p5": VueP5
     },
     data: () => ({
-       yoff : 0.0,
-       xoff : 0,
-       width : 310,
-       height : 400
+       yoff : 2.25,
+       xoff : 2.75,
+       width : 420,
+       height : 700,
+       drinkWidth : 325,
+       drinkHeight : 625,
+       xAxis: 3,
+       yAxis: 3
     }),
     methods: {
       sketch(sketch) {
         sketch.draw = () => {
+           sketch.background(20, 30, 20, 0.35);
+           sketch.textSize(25);
+           sketch.text('Hover over the cup', 15, 30);
         };
       },
       setup(sketch) {
-        sketch.createCanvas(this.width, this.height);
-        sketch.fill(255);
-        sketch.stroke(200);
+        sketch.createCanvas(this.width, this.height, this.WEBGL);
+        sketch.stroke(22);
       },
       draw(sketch) {
+        sketch.push();
+        sketch.ellipse(35, 80, 60, 60);
+        sketch.ellipse(95, 80, 60, 60);
+        sketch.ellipse(150, 80, 60, 60);
+        sketch.ellipse(200, 80, 60, 60);
+        sketch.ellipse(250, 80, 60, 60);
+        sketch.ellipse(300, 80, 45, 60);
+        // sketch.pop();
+        // sketch.push();
+        sketch. translate(350, 160);
+        sketch.rotate(sketch.radians(sketch.frameCount*2));
+        sketch.line(0, -60, 0, -40);
+        sketch.line(0, 40, 0, 60);
+        sketch.line(-45, -45, -30, -30);
+        sketch.line(45, -45, 30, -30);
+        sketch. line(-60, 0, -40, 0);
+        sketch.line(60, 0, 40, 0);
+        sketch.line(-45, 45, -30, 30);
+        sketch.line(0, 40, 0, 40);
+        sketch.line(45, 45, 30, 30);
+        sketch.pop();
+
+        let barWidth = 0.2 ;
+        let lastBar = -1;
+        sketch.colorMode(sketch.HSB,this.drinkWidth,this.drinkHeight,40);
+        let whichBar = sketch.mouseX / barWidth;
+        if (whichBar !== lastBar) {
+          let barX = whichBar * barWidth;
+           sketch.fill(barX, sketch.mouseY, 10);
+           lastBar = whichBar;
+        }
         sketch.beginShape();
-        let c = sketch.color('brown');
-        sketch.fill(c);
         // Iterate over horizontal pixels
-        for (let x = 0; x <= this.width; x += 10) {
+        for (let x = 2; x <= this.drinkWidth; x += 5) {
           // Calculate a y value according to noise, map to
           // 2D Noise
-          let y = sketch.map(sketch.noise(this.xoff, this.yoff), 0, 1, 100,200);
+          let y = sketch.map(sketch.noise(this.xoff, this.yoff), 1, 4,100,200);
           // Set the vertex
           sketch.vertex(x, y);
           // Increment x dimension for noise
-          this.xoff += 0.05;
+          this.xoff += 0.35;
         }
         // increment y dimension for noise
-        this.yoff += 0.01;
-        sketch.vertex(this.width, this.height);
-        sketch.vertex(0, this.height);
+        this.yoff += 0.51;
+        sketch.vertex(this.drinkWidth, this.height);
+        sketch.vertex(0, this.drinkHeight);
         sketch.endShape(sketch.CLOSE);
       }
     }

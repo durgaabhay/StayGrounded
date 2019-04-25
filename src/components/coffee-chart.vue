@@ -6,8 +6,8 @@
         <p>Two types of coffee dominate commercial production:
           Arabica (Coffee Arabica) and Robusta (Coffee Canephora) --
           World coffee production is split 60% Arabica and 40% Robusta</p>
-        <apexchart type=pie width=780 :options="coffeeCountries" :series="coffeeValues" />
-        <h5>Disclaimer: Data fetched from http://www.e-importz.com/coffee-economics.php</h5>
+        <apexchart type=pie width=780  :options="coffeeCountries" :series="coffeeValues" />
+        <!--<h5>Disclaimer: Data fetched from http://www.e-importz.com/coffee-economics.php</h5>-->
       </div>
     </div>
   </div>
