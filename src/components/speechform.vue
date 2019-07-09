@@ -1,5 +1,18 @@
 <template>
+
   <div class="container">
+    <!-- NAVBAR -->
+    <nav>
+      <ul>
+
+        <li><a><router-link to="/home/Donna">Home</router-link></a></li>
+        <li><a><router-link to="/data"> Data</router-link></a></li>
+
+        <li><a><router-link to="/brew">Brew A Cup</router-link></a></li>
+        <li><a><router-link to="/speechform">Voice Order</router-link></a></li>
+      </ul>
+    </nav>
+
     <div class="audio-control">
       <p id="audio-control" class="white-circle">
         <img src="../assets/microphone.png">
@@ -30,6 +43,3 @@ export default {
     }
 </script>
 
-<style scoped>
-
-</style>

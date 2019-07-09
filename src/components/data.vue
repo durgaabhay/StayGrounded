@@ -5,26 +5,28 @@
     <!-- NAVBAR -->
     <nav>
       <ul>
-
-        <li><a><router-link to="/home/Donna">Home</router-link></a></li>
-        <li><a><router-link to="/data"> Data</router-link></a></li>
-
-        <li><a><router-link to="/brew">Brew A Cup</router-link></a></li>
-        <li><a><router-link to="/speechform">Voice Order</router-link></a></li>
+        <li><a role="navigation"><router-link to="/home/">Home</router-link></a></li>
+        <li><a role="navigation"><router-link to="/buildDrink">Brewmaker 1.0</router-link></a></li>
+        <li><a role="navigation"><router-link to="/lexbot">Voice Order</router-link></a></li>
+        <li><a role="navigation"><router-link to="/menu">Explore Drinks</router-link></a></li>
+        <li><a role="navigation"><router-link to="/data" class="active">Fun Facts</router-link></a></li>
       </ul>
     </nav>
 
     <div id = "dataContent">
+      <!-- D3 COFFEE CHART -->
+      <div class="intbox leftBottomBox">
+        <coffee-chart></coffee-chart>
+      </div>
 
-    <div class="intbox leftBottomBox">
-      <coffee-chart></coffee-chart>
-    </div>
-
-    <div class="intbox rightBottomBox">
-      <tea-chart></tea-chart>
+      <!-- D3 TEA CHART -->
+      <div class="intbox rightBottomBox">
+        <tea-chart></tea-chart>
+      </div>
+      
     </div>
   </div>
-  </div>
+
 </template>
 
 
@@ -80,3 +82,4 @@
     }
   };
 </script>
+

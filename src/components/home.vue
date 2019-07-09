@@ -1,57 +1,61 @@
 <script src="../router/index.js"></script>
 <template>
 
-  <b-container fluid>
-    <!-- NAVBAR -->
-    <nav>
-      <ul>
+   <b-container fluid>
+      <!-- NAVBAR -->
+      <nav>
+          <ul>
+            <li><a role="navigation"><router-link to="/home/" class="active" role='button' tabindex='0'>Home</router-link></a></li>
+            <li><a role="navigation"><router-link to="/buildDrink" role='button' tabindex='0'>Brewmaker 1.0</router-link></a></li>
+            <li><a role="navigation"><router-link to="/lexbot" role='button' tabindex='0'>Voice Order</router-link></a></li>
+            <li><a role="navigation"><router-link to="/menu" role='button' tabindex='0'>Explore Drinks</router-link></a></li>
+            <li><a role="navigation"><router-link to="/data" role='button' tabindex='0'>Fun Facts</router-link></a></li>
+          </ul>
+      </nav>
+      <div id= 'centerContainer'>
+         <!-- LOGO -->
+         <div class="content-row">
+           <div id="logo">
+             <img src="../assets/logo.png">
+           </div>
+         </div>
+        <div id="home-content">
+            <!--<h1>Choose from the following options:</h1>-->
 
-        <li><a><router-link to="/home/Donna">Home</router-link></a></li>
-        <li><a><router-link to="/data"> Data</router-link></a></li>
-
-        <li><a><router-link to="/menu">Brew A Cup</router-link></a></li>
-        <li><a><router-link to="/speechform">Voice Order</router-link></a></li>
-      </ul>
-    </nav>
-    <div id= 'centerContainer'>
-      <b-img id= 'logo' :src="require('../assets/logo.png')" fluid alt="Stay Grounded Logo Image"></b-img>
-
-      <div id="centerContent">
-        <b-row>
-          <b-col md="3">
-            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/data" role="button">
-              <i class="material-icons">
-                insert_chart
-              </i>
-            <h2>Bean Stats</h2>
+            <!-- BUILD A DRINK -->
+            <router-link class="btn btn-outline-success option" to="/buildDrink" role="button"  tabindex='0' aria-pressed="false">
+                <img src="../assets/coffee-maker.png">
+                <!--<img src="../assets/coffee-maker-w.png" class="hover" style="display: none;">-->
+                <h2>Brewmaker 1.0</h2>
             </router-link>
-          </b-col>
 
-          <!-- Next element -->
-          <b-col md="3">
-            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/buildDrink" role="button">
-              <i class="material-icons">
-                build
-              </i>
-              <h2>Build A Drink</h2>
+            <!-- LEXBOT -->
+            <router-link class="btn btn-outline-primary option" to="/lexbot" role="button" tabindex='0' aria-pressed="false">
+                <img src="../assets/microphone.png" class="normal">
+                <!--<img src="../assets/microphone-w.png" class="hover" style="display: none;">-->
+                <h2>Voice Order</h2>
             </router-link>
-          </b-col>
 
-          <!-- Next element -->
-          <b-col md="3">
-            <router-link class="btn btn-outline-success my-2 my-sm-0" to="/speechform" role="button">
-              <i class="material-icons">
-                local_drink</i>
-              <h2>Get Nutrition Info</h2>
+            <!-- LEXBOT -->
+            <router-link class="btn btn-outline-primary option" to="/menu" role="button" tabindex='0' aria-pressed="false">
+                <img src="../assets/coffee.png">
+                <!--<img src="../assets/coffee-w.png" class="hover" style="display: none;">-->
+                <h2>Explore Drinks</h2>
             </router-link>
-          </b-col>
-        </b-row>
+
+            <router-link class="btn btn-outline-danger option" to="/data" role="button" tabindex='0' aria-pressed="false">
+                <img src="../assets/data.png">
+                <!--<img src="../assets/data-w.png" class="hover" style="display: none;">-->
+                <h2>Fun Facts </h2>
+            </router-link>
+  
+        </div>
       </div>
-    </div>
-  </b-container>
+   </b-container>
 
 </template>
 <script>
+  import users from '../data/users'
   export default {
     name: "home",
     data() {
@@ -61,8 +65,11 @@
         user: {},
         error: {}
       }
+    },
+    methods: {
     }
   }
 </script>
 <style scoped>
 </style>
+
